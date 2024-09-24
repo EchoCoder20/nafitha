@@ -1,0 +1,160 @@
+
+nav ul li a.active {
+    font-size: 1vw;
+    padding: .7vw 1.2vw;
+    border-radius: 45vw;
+    background-color: #ffffff; 
+    color: #ffffff;
+}
+
+/* Login Section with Rectangular Shape */
+.login-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 5vw;
+    flex-grow: 1;
+    height: 47vw; 
+}
+
+.signup-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 5vw;
+    flex-grow: 1;
+    height: 60vw; 
+}
+
+/* Rectangular container */
+.login-shape {
+    margin-top: 4vw;
+    background-color: #fff;
+    border-radius: 30vw 0 0 30vw; 
+    border: solid 0.2vw #00c7cd;
+    padding: 5vw;
+    position: absolute;
+    right: -1vw; 
+    bottom: -0.5vw; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90vw;
+    height: auto;
+    z-index: 3;
+    box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);
+    margin-bottom: 4vw;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 15vw; /
+}
+
+.icon-image {
+    width: 0.5vw;  
+    max-width: 15vw; 
+    height: auto; 
+    z-index: 2;
+}
+
+.phone-image {
+    position: relative;
+    top: -7vw;  
+    left: -8vw;  
+    width: 0.5vw;  
+    max-width: 15vw; 
+    height: auto;
+    z-index: 1;
+}
+
+
+
+/* Login Form  */
+.login-form {
+    text-align: right;
+    width: 25vw; 
+}
+
+.login-form h2 {
+    font-size: 2vw;
+    margin-bottom: 2vw;
+    color: #1E255E;
+}
+
+.login-form label {
+    font-size: 1vw;
+    display: block;
+    margin-bottom: .5vw;
+    color: #1E255E;
+
+}
+
+.login-form input {
+    width: 100%;
+    padding: 1vw;
+    margin-bottom: 2vw;
+    border: 0.1vw solid #ccc;
+    border-radius: 0.5vw;
+    font-size: 1vw;
+}
+
+.login-btn {
+    background: linear-gradient(271.33deg, #00B8EA 6.29%, #00D6B1 107.87%); 
+    color: white; 
+    padding: 1vw;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 0.5vw;
+    font-size: 1.2vw;
+    transition: background 0.3s, border 0.3s, color 0.3s; 
+}
+
+.login-btn:hover {
+    background: transparent; 
+    border: 2px solid #00c7cd; 
+    color: #00c7cd; 
+}
+
+
+.create-account {
+    color: #1E255E;
+
+    text-align: center;
+    margin-top: 2vw;
+    font-size: 1vw;
+}
+.forgot-password{
+    text-align: end;
+    margin-bottom: 1.5vw;
+    font-size: 1vw;
+}
+
+.forgot-password a, .create-account a {
+    color: #0072ff;
+    text-decoration: none;
+}
+
+.password-field {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    left: 1vw;
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.toggle-password img {
+    width: 2vw; 
+    height: auto;
+}

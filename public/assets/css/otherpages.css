@@ -1,0 +1,17 @@
+
+/* تصميم الأزرار في الصفحات الأخرى */
+.otherpage-btn {
+    /* background-color: #ff5722;  */
+    color: #1E255E;
+    border: none;
+    padding: 10px 20px;
+    /* border-radius: 30px; */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    /* font-weight: bold; */
+}
+
+.otherpage-btn:hover {
+    color: #00c7cd; 
+}
