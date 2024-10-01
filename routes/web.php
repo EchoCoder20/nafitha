@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OpenAIController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +25,11 @@ Route::get('/chat', function () {
 });
 
 Route::get('/start-questionnaire', [OpenAIController::class, 'startQuestionnaire']);
-Route::get('/start-test', [OpenAIController::class, 'index']);
+Route::get('/nextQuestion/{id}', [OpenAIController::class, 'nextQuestion']);
+Route::get('/result', [OpenAIController::class, 'result']);
+Route::get('/chatting', [OpenAIController::class, 'chat']);
+Route::post('/submitAnswer', [OpenAIController::class, 'submitAnswer']);
+// Route::get('/start-test', [OpenAIController::class, 'index']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
