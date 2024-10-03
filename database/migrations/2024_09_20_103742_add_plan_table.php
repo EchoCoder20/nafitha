@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schame::create('plan', function (Blueprint $table) {
+        Schema::create('plan', function (Blueprint $table) {
             $table->id();
             $table->string('plan_name');
             $table->double('price');

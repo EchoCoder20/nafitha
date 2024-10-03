@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schame::create('school', function (Blueprint $table) {
+        Schema::create('school', function (Blueprint $table) {
             $table->id();
             $table->string('school_name');
-            $table->string('email')->unique();
-            $table->string('phone_number');
+            $table->string('email')->default(null);
+            $table->string('phone_number')->default(null);
+            $table->unsignedBigInteger('code_id');
+            $table->string('school_type')->default('public');
             $table->timestamps();
         });
 

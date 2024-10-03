@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schame::create('payment', function (Blueprint $table) {
+        Schema::create('payment', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');//user or students
+            $table->unsignedBigInteger('user_id');//user or students
+            $table->unsignedBigInteger('school_id');
             $table->string('payment_status');
             $table->double('price');
             $table->timestamps();

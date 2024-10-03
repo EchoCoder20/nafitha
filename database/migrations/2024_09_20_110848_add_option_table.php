@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schame::create('option', function (Blueprint $table) {
+        Schema::create('option', function (Blueprint $table) {
             $table->id();
             $table->json('ordered_option');//user or students
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

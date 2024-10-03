@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schame::create('marks', function (Blueprint $table) {
+        Schema::create('marks', function (Blueprint $table) {
             $table->id();
             $table->json('marks');//user or students
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schame::create('subscription', function (Blueprint $table) {
+        Schema::create('subscription', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');//stduent or school
-            $table->string('plan_id');
-            $table->boolean('status');
-            $table->date('Expired_date');
+            $table->unsignedBigInteger('user_id');//stduent or school
+            $table->unsignedBigInteger('school_id');
+            $table->unsignedBigInteger('plan_id');
             $table->timestamps();
         });
     }

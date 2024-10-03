@@ -137,9 +137,18 @@ class OpenAIController extends Controller
                 'json' => [
                     'model' => 'gpt-4-turbo',
                     'messages' => [
-                        ['role' => 'system', 'content' => 'You are a career advisor helping 12th-grade students find suitable university majors.'],
-                        ['role' => 'user', 'content' => $template],
-                    ],
+                                ['role' => 'system', 'content' => 'You are a career advisor helping 12th-grade students find suitable university majors.'],
+                                ['role' => 'user', 'content' => $template],
+                                ['role' => 'assistant', 'content' => 'The most suitable 6 majors for you are: 
+                                                                        1. [Major 1] - because [reason 1].
+                                                                        2. [Major 2] - because [reason 2].
+                                                                        3. [Major 3] - because [reason 3].
+                                                                        4. [Major 4] - because [reason 4].
+                                                                        5. [Major 5] - because [reason 5].
+                                                                        6. [Major 6] - because [reason 6].'
+                                ]
+                            ],
+
                     'max_tokens' => 1000,
                     'temperature' => 0.5,
                 ],
@@ -159,48 +168,56 @@ class OpenAIController extends Controller
     {
         $questions = [
             [
+                "question" => "هل أنت طالب علمي أو أدبي",
+                "options" => [
+                    "أ) علمي",
+                    "ب) أدبي",
+                   
+                ]
+                ],
+            [
                 "question" => "ما هي المادة الدراسية التي تشعر بأنها الأسهل بالنسبة لك؟",
                 "options" => [
-                    "A) الرياضيات",
-                    "B) العلوم",
-                    "C) اللغة العربية",
-                    "D) التاريخ"
+                    "أ) الرياضيات",
+                    "ب) العلوم",
+                    "ج) اللغة العربية",
+                    "د) التاريخ"
                 ]
             ],
             [
                 "question" => "هل تفضل المواد التي تعتمد على التحليل وحل المشكلات أم تلك التي تعتمد على الحفظ والفهم؟",
                 "options" => [
-                    "A) التحليل وحل المشكلات",
-                    "B) الحفظ والفهم",
-                    "C) مزيج بين الاثنين",
-                    "D) لا أفضلهما"
+                    "أ) التحليل وحل المشكلات",
+                    "ب) الحفظ والفهم",
+                    "ج) مزيج بين الاثنين",
+                    "د) لا أفضلهما"
                 ]
             ],
             [
                 "question" => "ما النشاط الذي تستمتع به في وقت فراغك؟",
                 "options" => [
-                    "A) القراءة والكتابة",
-                    "B) ممارسة الأنشطة الرياضية",
-                    "C) تعلم البرمجة أو التكنولوجيا",
-                    "D) الأعمال اليدوية أو الفنية"
+                    "أ) القراءة والكتابة",
+                    "ب) ممارسة الأنشطة الرياضية",
+                    "ج) تعلم البرمجة أو التكنولوجيا",
+                    "د) الأعمال اليدوية أو الفنية"
                 ]
             ],
             [
                 "question" => "هل تفضل التحديات التي تتطلب تفكيرًا منطقيًا أم تلك التي تتطلب إبداعًا وخيالاً؟",
                 "options" => [
-                    "A) التفكير المنطقي",
-                    "B) الإبداع والخيال",
-                    "C) مزيج من الاثنين",
-                    "D) لا أفضلهما"
+                    "أ) التفكير المنطقي",
+                    "ب) الإبداع والخيال",
+                    "ج) مزيج من الاثنين",
+                    "د) لا أفضلهما"
                 ]
             ],
             [
                 "question" => "هل تفضل العمل ضمن فريق أم تفضل العمل بشكل فردي؟",
                 "options" => [
-                    "A) ضمن فريق",
-                    "B) بشكل فردي",
-                    "C) يعتمد على المهمة",
-                    "D) لا أفضل الاثنين"
+                    "أ) ضمن فريق",
+                    "ب) بشكل فردي",
+                    "ج) يعتمد على المهمة",
+                    "د) لا أفضل الاثنين"
                 ]
             ],
             [
@@ -210,6 +227,15 @@ class OpenAIController extends Controller
                     "B) أحتاج إلى تنظيم وقتي جيدًا للتعامل مع الضغط",
                     "C) أشعر بالتوتر وأفضل العمل في بيئة هادئة",
                     "D) يعتمد على نوع المهمة"
+                ]
+                ],
+            [
+                "question" => "كيف تقيم قدرتك في التواصل و التعبير عن الأفكار؟",
+                "options" => [
+                    "أ) ممتاز",
+                    "ب) جيد",
+                    "ج) متوسط",
+                    "د) ضعيف"
                 ]
             ]
         ];
@@ -262,12 +288,7 @@ class OpenAIController extends Controller
     {
         //
        
-        $current_question="هل أنت طالب علمي و أدبي ؟";
-        $options=[
-            'علمي',
-            'أدبي'
-        ];
-        return response()->json(array('msg'=> $current_question,'options'=>$options), 200);
+       
 
     }
     

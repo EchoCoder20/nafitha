@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schame::create('code', function (Blueprint $table) {
+        Schema::create('code', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->string('school_id');
             $table->boolean('status');
             $table->date('Expired_date');
             $table->timestamps();
