@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-       <!-- Chat Section -->
-       <div class="chat-container">
+    <!-- Chat Section -->
+    <div class="chat-container">
         <div id="chat-window">
             <!-- Murshid's initial message -->
             <div id="murshid-message" class="message murshid-message">
@@ -19,16 +19,13 @@
                 </div>
             </div>
 
-            <!-- Exam Box (Hidden initially) -->
+            <!-- Exam Box -->
             <div id="exam-box" class="exam-container" style="display: none;">
-                
                 <h2 class="exam-title">اختبار تحديد الشغف</h2>
                 <div class="progress-bar">
                     <div id="progress" style="width: 0%;"></div>
                 </div>
                 <div id="question-box">
-
-
                     <p class="question-text">ما الذي تستمتع به أكثر عند تعلم موضوع جديد؟</p>
                     <div class="choices">
                         <label><input type="radio" name="question1" value="1"> تطبيق النظريات العلمية في تجارب واقعية.</label><br>
@@ -38,17 +35,15 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    
-                    <button id="back-btn" style="display: none;">
-                         <i class="fas fa-arrow-right icon"></i>رجوع
-                    </button>
                     <button id="next-btn" disabled>
-                    التالي <i class="fas fa-arrow-left icon"></i> 
+                        <i class="fas fa-arrow-right icon"></i> التالي
                     </button> 
+                    <button id="back-btn" style="display: none;">
+                        رجوع <i class="fas fa-arrow-left icon"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- End Message (Hidden initially) -->
             <div id="end-message" class="message murshid-message" style="display: none;">
                 <img src="photo/murshid_icon.png" alt="Murshid Icon" class="chat-icon">
                 <div class="message-bubble murshid-bubble">
@@ -253,8 +248,8 @@
                 <button id="submit-info-btn" class="start-btn">تسليم البيانات</button>
 
             </div>
-            <div class="recommendation" id="recommendation" style="display: none;">
-                <!-- <div class="recommendation-view" id="recommendation-view"> -->
+            <div class="recommendation"  style="display: none;">
+                <div class="recommendation-view" id="result">
 
                 <h2>نتيجة الاختبار</h2>
                 <p>بناءً على إجاباتك وتحليل اهتماماتك الشخصية والمهنية، نقدم لك التخصصات التي تتناسب مع قدراتك واهتماماتك. هذه التخصصات تم اختيارها بعناية لتناسب ميولك الشخصية وتمكنك من التفوق والنجاح في مسيرتك الأكاديمية والمهنية:</p>
@@ -267,11 +262,10 @@
                 </ol>
                 
                 <div class="button-container">
-                     <!-- <div id="start-chating"><button id="start-chat-btn" class="start-chat-btn" value="1">  ابدأ الدردشة  </button></div>
-                    
-                    <button id="back-btn" class="download-pdf-btn">  قم بتنزيل النتيجة PDF <i class="fas fa-download"></i>  </button>  -->
+                    <button id="next-btn" class="start-chat-btn">  ابدأ الدردشة  </button>
+                    <button id="back-btn" class="download-pdf-btn">  قم بتنزيل النتيجة PDF <i class="fas fa-download"></i>  </button>
                 </div>
-            <!-- </div> -->
+            </div>
             </div>
 
        </div>  
@@ -279,13 +273,12 @@
     </div>
 
         <!-- Input Area -->
-        <div id='input-area' class='input-area' style="display: none;">
-            <div class="input-container">
-                <textarea id="user-input" placeholder="اكتب رسالتك ......"></textarea>
-                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
-            </div>
+         <div class="input-area-hidden" style="display: none;">
+        <div class="input-area" id="input-area" >
+            <textarea id="user-input" placeholder="اكتب رسالتك ......"></textarea>
+            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
         </div>
-        
+</div>
         
 
     </div>

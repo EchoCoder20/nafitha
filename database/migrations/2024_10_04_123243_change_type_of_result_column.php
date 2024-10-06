@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //for school
-        Schema::create('code', function (Blueprint $table) {
-            $table->id();
-            $table->string('code');
-            $table->unsignedBigInteger('school_id');
-            $table->boolean('status');
-            $table->date('Expired_date');
-            $table->timestamps();
+        //
+        Schema::table('result', function (Blueprint $table) {
+            // Change the type of the column
+            $table->longText('result')->change(); // Example: changing to string
+    
         });
     }
 

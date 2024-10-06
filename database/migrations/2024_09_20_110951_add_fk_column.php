@@ -15,12 +15,11 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             
             $table->foreign('school_id')->references('id')->on('school');
-            $table->foreign('code_id')->references('id')->on('code');
            
         });
-        Schema::table('school', function (Blueprint $table) {
+        Schema::table('code', function (Blueprint $table) {
             
-            $table->foreign('code_id')->references('id')->on('code');
+            $table->foreign('school_id')->references('id')->on('school');
            
         });
         Schema::table('subscription', function (Blueprint $table) {

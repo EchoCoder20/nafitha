@@ -1,8 +1,31 @@
-@extends('layouts.app')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Murshid</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" id="contact-link">اتصل بنا</a></li>
+                <li><a href="aboutus.html" id="about-link">تعرف علينا</a></li>
+                <li><a href="index.html #packagesh1" id="packages-link">الباقات</a></li>
+                <li><a href="index.html" id="home-link">الرئيسية</a></li>
+                <li><a href="login.html" class="btn login-btn" id="login-link">تسجيل الدخول</a></li>
+            </ul>
+        </nav>
+        <div class="logo">
+            <a href="index.html"><img src="photo/logo-nafitha.png" alt="Logo"></a>
+        </div>
+    </header>
 
-       <!-- Chat Section -->
-       <div class="chat-container">
+    <!-- Chat Section -->
+    <div class="chat-container">
         <div id="chat-window">
             <!-- Murshid's initial message -->
             <div id="murshid-message" class="message murshid-message">
@@ -19,16 +42,13 @@
                 </div>
             </div>
 
-            <!-- Exam Box (Hidden initially) -->
+            <!-- Exam Box -->
             <div id="exam-box" class="exam-container" style="display: none;">
-                
                 <h2 class="exam-title">اختبار تحديد الشغف</h2>
                 <div class="progress-bar">
                     <div id="progress" style="width: 0%;"></div>
                 </div>
                 <div id="question-box">
-
-
                     <p class="question-text">ما الذي تستمتع به أكثر عند تعلم موضوع جديد؟</p>
                     <div class="choices">
                         <label><input type="radio" name="question1" value="1"> تطبيق النظريات العلمية في تجارب واقعية.</label><br>
@@ -38,17 +58,15 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    
-                    <button id="back-btn" style="display: none;">
-                         <i class="fas fa-arrow-right icon"></i>رجوع
-                    </button>
                     <button id="next-btn" disabled>
-                    التالي <i class="fas fa-arrow-left icon"></i> 
+                        <i class="fas fa-arrow-right icon"></i> التالي
                     </button> 
+                    <button id="back-btn" style="display: none;">
+                        رجوع <i class="fas fa-arrow-left icon"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- End Message (Hidden initially) -->
             <div id="end-message" class="message murshid-message" style="display: none;">
                 <img src="photo/murshid_icon.png" alt="Murshid Icon" class="chat-icon">
                 <div class="message-bubble murshid-bubble">
@@ -80,10 +98,10 @@
                         <option value="مهارات موسيقية">مهارات موسيقية</option>
                         <option value="الفنون التشكيلية">الفنون التشكيلية</option>
                     </select>
-                    <input type="number" class="grade-input" id="first_mark" placeholder="أدخل الدرجة" min="0" max="100">
+                    <input type="number" class="grade-input" placeholder="أدخل الدرجة" min="0" max="100">
                 </div>
                 <div class="subject-row">
-                    <select class="subject-dropdown" id="two_sub">
+                    <select class="subject-dropdown" id="second_sub">
                         <option value="" disabled selected>اختر مادة</option>
                         <option value="هذا وطني">هذا وطني</option>
                         <option value="الرياضة المدرسية">الرياضة المدرسية</option>
@@ -101,7 +119,7 @@
                         <option value="مهارات موسيقية">مهارات موسيقية</option>
                         <option value="الفنون التشكيلية">الفنون التشكيلية</option>
                     </select>
-                    <input type="number" class="grade-input" id="two_mark" placeholder="أدخل الدرجة" min="0" max="100">
+                    <input type="number" class="grade-input" placeholder="أدخل الدرجة" min="0" max="100">
                 </div>
                 <div class="subject-row">
                     <select class="subject-dropdown" id="third_sub">
@@ -122,7 +140,7 @@
                         <option value="مهارات موسيقية">مهارات موسيقية</option>
                         <option value="الفنون التشكيلية">الفنون التشكيلية</option>
                     </select>
-                    <input type="number" class="grade-input" id="third_mark" placeholder="أدخل الدرجة" min="0" max="100">
+                    <input type="number" class="grade-input" placeholder="أدخل الدرجة" min="0" max="100">
                 </div>
                 <div class="subject-row">
                     <select class="subject-dropdown" id="four_sub">
@@ -143,7 +161,7 @@
                         <option value="مهارات موسيقية">مهارات موسيقية</option>
                         <option value="الفنون التشكيلية">الفنون التشكيلية</option>
                     </select>
-                    <input type="number" class="grade-input" id="four_mark" placeholder="أدخل الدرجة" min="0" max="100">
+                    <input type="number" class="grade-input" placeholder="أدخل الدرجة" min="0" max="100">
                 </div>
                 <div class="subject-row">
                     <select class="subject-dropdown" id="five_sub">
@@ -164,10 +182,10 @@
                         <option value="مهارات موسيقية">مهارات موسيقية</option>
                         <option value="الفنون التشكيلية">الفنون التشكيلية</option>
                     </select>
-                    <input type="number" class="grade-input" id="five_mark" placeholder="أدخل الدرجة" min="0" max="100">
+                    <input type="number" class="grade-input" placeholder="أدخل الدرجة" min="0" max="100">
                 </div>
                 <div class="subject-row">
-                    <select class="subject-dropdown" id="six_sub">
+                    <select class="subject-dropdown"id="sex_sub">
                         <option value="" disabled selected>اختر مادة</option>
                         <option value="هذا وطني">هذا وطني</option>
                         <option value="الرياضة المدرسية">الرياضة المدرسية</option>
@@ -185,7 +203,7 @@
                         <option value="مهارات موسيقية">مهارات موسيقية</option>
                         <option value="الفنون التشكيلية">الفنون التشكيلية</option>
                     </select>
-                    <input type="number" class="grade-input" id="six_mark" placeholder="أدخل الدرجة" min="0" max="100">
+                    <input type="number" class="grade-input" placeholder="أدخل الدرجة" min="0" max="100">
                 </div>
                 <div class="subject-row">
                     <select class="subject-dropdown" id="seven_sub">
@@ -206,7 +224,7 @@
                         <option value="مهارات موسيقية">مهارات موسيقية</option>
                         <option value="الفنون التشكيلية">الفنون التشكيلية</option>
                     </select>
-                    <input type="number" class="grade-input" id="seven_mark" placeholder="أدخل الدرجة" min="0" max="100">
+                    <input type="number" class="grade-input" placeholder="أدخل الدرجة" min="0" max="100">
                 </div>
                 <div class="subject-row">
                     <select class="subject-dropdown" id="eight_sub">
@@ -227,7 +245,7 @@
                         <option value="مهارات موسيقية">مهارات موسيقية</option>
                         <option value="الفنون التشكيلية">الفنون التشكيلية</option>
                     </select>
-                    <input type="number" class="grade-input" id="eight_mark" placeholder="أدخل الدرجة" min="0" max="100">
+                    <input type="number" class="grade-input" placeholder="أدخل الدرجة" min="0" max="100">
                 </div>
                 <div class="subject-row">
                     <select class="subject-dropdown" id="nine_sub">
@@ -248,13 +266,13 @@
                         <option value="مهارات موسيقية">مهارات موسيقية</option>
                         <option value="الفنون التشكيلية">الفنون التشكيلية</option>
                     </select>
-                    <input type="number" class="grade-input" id="nine_mark" placeholder="أدخل الدرجة" min="0" max="100">
+                    <input type="number" class="grade-input" placeholder="أدخل الدرجة" min="0" max="100">
                 </div>
                 <button id="submit-info-btn" class="start-btn">تسليم البيانات</button>
 
             </div>
-            <div class="recommendation" id="recommendation" style="display: none;">
-                <!-- <div class="recommendation-view" id="recommendation-view"> -->
+            <div class="recommendation" style="display: none;">
+                <div class="recommendation-view">
 
                 <h2>نتيجة الاختبار</h2>
                 <p>بناءً على إجاباتك وتحليل اهتماماتك الشخصية والمهنية، نقدم لك التخصصات التي تتناسب مع قدراتك واهتماماتك. هذه التخصصات تم اختيارها بعناية لتناسب ميولك الشخصية وتمكنك من التفوق والنجاح في مسيرتك الأكاديمية والمهنية:</p>
@@ -267,11 +285,10 @@
                 </ol>
                 
                 <div class="button-container">
-                     <!-- <div id="start-chating"><button id="start-chat-btn" class="start-chat-btn" value="1">  ابدأ الدردشة  </button></div>
-                    
-                    <button id="back-btn" class="download-pdf-btn">  قم بتنزيل النتيجة PDF <i class="fas fa-download"></i>  </button>  -->
+                    <button id="next-btn" class="start-chat-btn">  ابدأ الدردشة  </button>
+                    <button id="back-btn" class="download-pdf-btn">  قم بتنزيل النتيجة PDF <i class="fas fa-download"></i>  </button>
                 </div>
-            <!-- </div> -->
+            </div>
             </div>
 
        </div>  
@@ -279,19 +296,70 @@
     </div>
 
         <!-- Input Area -->
-        <div id='input-area' class='input-area' style="display: none;">
-            <div class="input-container">
-                <textarea id="user-input" placeholder="اكتب رسالتك ......"></textarea>
-                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
-            </div>
+         <div class="input-area-hidden" style="display: none;">
+        <div class="input-area" id="input-area" >
+            <textarea id="user-input" placeholder="اكتب رسالتك ......"></textarea>
+            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
         </div>
-        
+</div>
         
 
     </div>
 
-<script src="{{asset('assets/js/chat.js')}}"></script>
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-      </script>
-@endsection
+      <!-- footer -->
+      <footer class="footer">
+        <div class="footer-content">
 
+            <!-- الشعار وحقوق النشر -->
+            <div class="footer-section logo-section">
+                <a href="#"><img src="photo/logo-white.png" alt="الشعار" class="footer-logo"></a>
+                <p class="footer-copyright">حقوق النشر © 2024 نافذة. جميع الحقوق محفوظة.</p>
+            </div>
+    
+            <div class="footer-divider"></div>
+    
+            <!-- قسم من نحن -->
+            <div class="footer-section about-section">
+                <h4>من نحن</h4>
+                <p>منصة "نافذة" تخدم طلاب الثانوية الباحثين عن توجيه أكاديمي دقيق وموثوق.
+                    تساعد المنصة الطالب على اكتشاف التخصصات التي تتناسب مع قدراته وشغفه، مع توفير تحليل شامل ومخصص لميوله الأكاديمية.
+                    يمكن للطلاب أيضًا ترتيب خياراتهم في القبول الموحد بسهولة، مما يضمن اتخاذ قرارات أكاديمية مدروسة تتناسب مع طموحاتهم ونتائجهم الدراسية.</p>
+            </div>
+    <div class="footer-divider"></div>
+
+            <div class="footer-contact">
+                
+                <h4>معلومات الاتصال</h4>
+                <div class="call">
+                    <p>+0000000</p>
+                <img src="photo/phone-call.png">
+                
+                
+            </div>
+            
+            <div class="email">
+                
+                <p>nafitha@gmail.com</p>
+                <img src="photo/email.png">
+            </div>
+            </div>
+    
+            <div class="footer-divider"></div>
+    
+            <!-- قسم برامج التواصل -->
+            <div class="footer-section social-section">
+                <h4>تابعونا</h4>
+                <p>تابعونا على مواقع التواصل الاجتماعي</p>
+                <div class="social-icons">
+                    <a href="#"><img src="photo/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="photo/twitter.png" alt="Twitter"></a>
+                    <a href="#"><img src="photo/discord.png" alt="Discord"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="js/chat.js"></script> 
+</body>
+</html>

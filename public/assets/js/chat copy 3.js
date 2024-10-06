@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const examBox = document.getElementById('exam-box');
 
 
-
-/////////////////////////
     function sendMessage() {
         const message = userInput.value.trim();
 
@@ -19,17 +17,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
-            // typingAnimation.style.display = 'flex';
+            typingAnimation.style.display = 'flex';
 
             setTimeout(() => {
-                // typingAnimation.style.display = 'none'; 
-                chatResponse(message);
-               
+                typingAnimation.style.display = 'none'; 
+                
+                const botMessage = `<div class="message murshid-message"><div class="message-bubble murshid-bubble">
+                    مرحباً! 👋<br> 
+                    أنا مرشد. مساعدك الشخصي في اكتشاف شغفك واختيار التخصص الأنسب لك. أنا هنا لمساعدتك في معرفة ميولك وإرشادك نحو مستقبلك المهني. دعنا نبدأ الاختبار لتحديد اهتماماتك وشغفك الحقيقي. هل أنت مستعد؟
+                    <button class="start-btn">ابدأ الاختبار الآن</button>
+                </div></div>`;
+                chatWindow.innerHTML += botMessage;
+                
+                chatWindow.scrollTop = chatWindow.scrollHeight;
 
-                // const startButton = document.querySelector('.start-btn');
-                // startButton.addEventListener('click', function() {
-                //     examBox.style.display = 'block'; 
-                // });
+
+                const startButton = document.querySelector('.start-btn');
+                startButton.addEventListener('click', function() {
+                    examBox.style.display = 'block'; 
+                });
             }, 2000);
         }
     }
@@ -71,7 +77,34 @@ const questions = [
         ]
     },
     {
-        question: "السؤال الثاني: ما هي المادة الدراسية التي تشعر بأنها الأسهل بالنسبة لك؟",
+        question: "السؤال الثاني: كيف تفضل قضاء وقت فراغك؟",
+        options: [
+            "البحث عن معلومات جديدة على الإنترنت أو في الكتب.",
+            "العمل على مشاريع يدوية أو تقنية.",
+            "التطوع أو المشاركة في فعاليات مجتمعية.",
+            "ممارسة الرياضة أو الأنشطة الخارجية."
+        ]
+    },
+    {
+        question: "السؤال الثالث: أي من هذه الأنشطة يستهويك أكثر؟",
+        options: [
+            "حل المشكلات الحسابية والمعادلات الرياضية.",
+            "كتابة القصص أو المقالات.",
+            "متابعة آخر المستجدات في عالم التكنولوجيا.",
+            "المشاركة في مناقشات سياسية أو اجتماعية."
+        ]
+    },
+    {
+        question: "السؤال الرابع: كيف تتعامل مع التحديات؟",
+        options: [
+            "أبحث عن حلول منطقية تستند إلى البيانات.",
+            "أفكر في حلول جديدة ومبتكرة.",
+            "أستعين بخبرات الآخرين وأعمل ضمن فريق.",
+            "أقوم بالتخطيط بعناية وأحلل جميع الخيارات."
+        ]
+    },
+    {
+        question: "السؤال الخامس: أي من المواد الدراسية المفضلة لديك في المدرسة؟",
         options: [
             "الرياضيات أو الفيزياء.",
             "الأدب أو الفن.",
@@ -80,90 +113,50 @@ const questions = [
         ]
     },
     {
-        question: "السؤال الثالث: ما هو نوع النشاط الذي تفضل القيام به في وقت فراغك؟",
+        question: "السؤال السادس:كيف تقيم قدرتك في التواصل و التعبير عن الأفكار؟",
         options: [
-            "ممارسة الرياضة أو التمارين البدنية",
-            "القراءة أو الكتابة",
-            "استخدام وسائل التواصل الاجتماعي",
-            "اللعب أو تطوير ألعاب الفيديو",
-            "العمل على مشاريع فنية أو يدوية"
+            "ممتاز",
+            "جيد",
+            "متوسط",
+            "ضعيف"
         ]
     },
     {
-        question: "السؤال الرابع: ما هو دورك المفضل في العمل الجماعي؟",
+        question: "السؤال السابع: ما نوع المهارات التي تشعر أنها تأتيك بسهولة؟",
         options: [
-            "قائد الفريق ومنسق المهام",
-            "الباحث وجامع المعلومات",
-            "المبدع وصاحب الأفكار الجديدة",
-            "المنفذ والمسؤول عن إتمام العمل",
-            "المقدم والعارض للمشروع النهائي"
+            "حل المشكلات الرياضية والتحليل المنطقي.",
+            "التعبير عن الأفكار بشكل إبداعي وفني.",
+            "البرمجة أو التعامل مع الأجهزة التقنية.",
+            "التواصل الفعال مع الآخرين وإقناعهم بوجهة نظري."
         ]
     },
     {
-        question: "السؤال الخامس: كيف تتعامل مع التحديات؟",
+        question: "السؤال الثامن: ما الذي يدفعك للشعور بالإنجاز؟",
         options: [
-            "أبحث عن حلول منطقية تستند إلى البيانات.",
-            "أفكر في حلول جديدة ومبتكرة.",
-            "أستعين بخبرات الآخرين وأعمل ضمن فريق.",
-            "أقوم بالتخطيط بعناية وأحلل جميع الخيارات."
-        ]
-    },
-    
-    
-
-    {
-        question: "السؤال السادس: ما هو أسلوب العمل الذي تفضله؟",
-        options: [
-            "العمل بشكل مستقل مع مسؤولية فردية",
-            "العمل ضمن فريق متعاون",
-            "مزيج من العمل الفردي والجماعي",
-            "العمل تحت إشراف وتوجيه مباشر",
-            "العمل في بيئة تنافسية"
-        ]
-    },
-
-    {
-        question: "السؤال السابع: كيف تقيم مهاراتك في التواصل والتعبير عن الأفكار؟",
-        options: [
-            "ممتاز في التواصل الشفهي والكتابي",
-            "جيد في التواصل الشفهي، أقل كفاءة في الكتابة",
-            "أفضل في التعبير الكتابي عن الشفهي",
-            "أجيد التواصل من خلال الوسائط المرئية والرقمية",
-            "بحاجة إلى تطوير مهارات التواصل بشكل عام"
-        ]
-    },
-    
-    {
-        question: "السؤال الثامن: ما الذي يجعلك تشعر بالإنجاز والرضا؟",
-        options: [
-            "حل مشكلة معقدة أو إكمال مشروع علمي",
-            "إنتاج عمل فني أو أدبي يحظى بالتقدير",
-            "تطوير تطبيق أو حل تقني مفيد",
-            "مساعدة الآخرين وإحداث تأثير إيجابي في المجتمع",
-            "تحقيق نجاح أكاديمي أو مهني ملموس"
+            "النجاح في حل مسألة صعبة أو مشروع معقد.",
+            "إبداع شيء جديد يثير إعجاب الآخرين.",
+            "مساعدة الآخرين في تحقيق أهدافهم.",
+            "تطوير فكرة أو مفهوم يؤدي إلى تغيير إيجابي."
         ]
     },
     {
-        question: "السؤال التاسع: كيف تفضل التعلم عن موضوع جديد يهمك؟",
+        question: "السؤال التاسع: كيف تفضل أن تقضي حياتك المهنية؟",
         options: [
-            "مشاهدة فيديوهات تعليمية على الإنترنت",
-            "قراءة كتب أو مقالات عن الموضوع",
-            "التحدث مع خبراء أو أشخاص ذوي خبرة",
-            "التجربة العملية والتعلم من خلال الممارسة",
-            "حضور ورش عمل أو دورات تدريبية"
+            "في مختبر أو بيئة بحثية.",
+            "في مكتب إبداعي أو استوديو فني.",
+            "في شركة تقنية أو بيئة عمل مليئة بالتحديات.",
+            "في مؤسسة اجتماعية أو حكومية تخدم المجتمع."
         ]
     },
     {
-        question: "السؤال العاشر: ما هو نوع البيئة التي تتخيل نفسك تعمل فيها بعد التخرج؟",
+        question: "السؤال العاشر: ما هو المجال الذي يثير فضولك أكثر؟",
         options: [
-            "مكتب تقليدي في شركة كبيرة",
-            "بيئة إبداعية مثل استوديو تصميم",
-            "العمل الميداني والتنقل",
-            "العمل من المنزل أو عن بعد",
-            "مختبر علمي أو مركز أبحاث"
+            "العلوم والتكنولوجيا.",
+            "الفن والتصميم.",
+            "الصحة والبيئة.",
+            "القانون أو العلاقات الدولية."
         ]
-    },
-    
+    }
 ];
 
 
@@ -287,7 +280,6 @@ function validateGrades() {
 }
 
 
-   
 //عرض النتيجة
 document.getElementById('submit-info-btn').addEventListener('click', function() {
     $first_sub=document.getElementById("first_sub");
@@ -352,8 +344,7 @@ document.getElementById('submit-info-btn').addEventListener('click', function() 
    
 
     getResult();
-    
-    
+
     // document.querySelector('#second-stage').innerHTML += recommendationMessage; 
 
     }
@@ -457,42 +448,35 @@ function getResult() {
             const recommendations = message.split("\n\n");
             console.log(recommendations);
             let formattedHTML =  `
-              <div class="recommendation-view" id="recommendation-view">
+             <div class="recommendation">
             <h2>نتيجة الاختبار</h2>
             <p>بناءً على إجاباتك وتحليل اهتماماتك الشخصية والمهنية، نقدم لك التخصصات التي تتناسب مع قدراتك واهتماماتك. 
             هذه التخصصات تم اختيارها بعناية لتناسب ميولك الشخصية وتمكنك من التفوق والنجاح في مسيرتك الأكاديمية والمهنية:</p> 
             <ol>`;
             
             recommendations.forEach((rec, index) => {
-                // let match = rec.match(/\*\*(.+?)\*\*\s*-\s*(.+)/);
-                let match = rec.match(/(.+?)\s-\s(.+)/);
+                console.log(rec);
+                // Extracting the title and description using regex
+                // let [_, title, description] = rec.match(/\d+\.\s\*\*(.+?)\*\*:(.+)/) || [];
+                let [_, title, description] = rec.match(/\*\*(.+?)\*\*\s*-\s*(.+)/) || [];
+                console.log(description); // Log the entire response for debugging
+                console.log(title); // Log the entire response for debugging
+                // let [_, title, description] = rec.match(/\d+\.\s\*\*(.+?)\*\*\s*[-:]\s*(.+)/) || [];
 
-                if (match && match.length === 3) {
-                    let [_, title, description] = match;
-                    console.log('Title:', title); // For debugging purposes
-                    console.log('Description:', description); // For debugging purposes
-
-                    // Build the list of recommendations dynamically
+                if (title && description) {
                     formattedHTML += `
+                        
                         <li>
                             <strong>${title}</strong>: ${description.trim()}
-                        </li>`;
-                } else {
-                    console.log('No match found for recommendation:', rec); // Debugging in case regex fails
+                        </li>
+                    `;
                 }
+               
             });
             
             formattedHTML += '</ol><br>';
             formattedHTML += `<p>تم اختيار هذه التخصصات بناءً على مهارات الطالب واهتماماته وأدائه الأكاديمي، مع مراعاة الاتجاهات الحالية في سوق العمل والمجالات الواعدة.</p>
-                    <div class="button-container">
-
-                    <button id="start-chat-btn" class="start-chat-btn" >  ابدأ الدردشة  </button>
-
-                    <button id="back-btn" class="download-pdf-btn">  قم بتنزيل النتيجة PDF <i class="fas fa-download"></i>  </button>
-
-                </div>
-
-          
+                        
             </div>`;
             
             
@@ -510,15 +494,12 @@ function getResult() {
             // // Insert the content into the recommendation div
             // document.getElementById('result').innerHTML = content;
             document.querySelector('#second-stage').innerHTML += formattedHTML; 
-
-            
-            saveResult(message);
            
-            
-            },
-            error: function(xhr, status, error) {
-                console.error("Error: " + error);
-            }
+            saveResult(message);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error: " + error);
+        }
 
     });
 }
@@ -535,57 +516,6 @@ function saveResult(recommendations)
         },
         success: function(response) {
             console.log(response);
-            startChatting();
-           
-          
-        },
-        error: function(xhr, status, error) {
-            console.error("Error: " + error);
-        }
-    });
-}
-function startChatting()
-{
-    const startChatBtn = document.getElementById('start-chat-btn');
-       
-        startChatBtn.addEventListener('click', function(event) {
-            document.querySelector('#recommendation-view').style.display = 'none';
-            document.querySelector('#second-stage').style.display = 'none';
-            
-            const inputArea = document.querySelector('#input-area');
-            inputArea.style.display = 'block';
-           
-        });
-  
-
-   
-  
-}
-function chatResponse(userQuestion)
-{
-    const chatWindow = document.getElementById('chat-window');
-
-    
-    $.ajax({
-        type: 'POST',
-        url: '/chatResponse',
-        data: {
-           
-            message:userQuestion,
-            _token: $('meta[name="csrf-token"]').attr('content')  // CSRF token from meta tag
-        },
-        success: function(response) {
-            console.log(response);
-            const chatAnswer = response.msg.trim();
-            const botMessage = `<div class="message murshid-message"><div class="message-bubble murshid-bubble">
-                    ${chatAnswer}
-            </div></div>`;
-            
-            chatWindow.innerHTML += botMessage;
-                
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-              
-           
           
         },
         error: function(xhr, status, error) {
