@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
-            // typingAnimation.style.display = 'flex';
+            typingAnimation.style.display = 'flex';
 
             setTimeout(() => {
-                // typingAnimation.style.display = 'none'; 
+                typingAnimation.style.display = 'none'; 
                 chatResponse(message);
                
 
@@ -569,6 +569,7 @@ function startChatting()
             
             const inputArea = document.querySelector('#input-area');
             inputArea.style.display = 'block';
+            document.querySelector('#pp').style.display ='block';
            
         });
   
@@ -576,6 +577,27 @@ function startChatting()
    
   
 }
+
+    //  dropdown menu 
+    const dropdownIcon = document.getElementById('dropdown-icon');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    
+    dropdownIcon.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        dropdownMenu.classList.toggle('show');
+    });
+    
+    document.addEventListener('click', function (event) {
+        if (!dropdownIcon.contains(event.target) && dropdownMenu.classList.contains('show')) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
+    
+    const chatInput = document.getElementById('user-input'); //id رسالة اليوزر
+    chatInput.addEventListener('focus', function() {
+        dropdownMenu.classList.add('show'); 
+    });
 function chatResponse(userQuestion)
 {
     const chatWindow = document.getElementById('chat-window');

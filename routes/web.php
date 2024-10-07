@@ -20,10 +20,7 @@ use App\Http\Controllers\OpenAIController;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/chat', function () {
-    // Session::flush();
-    return view('chat');
-});
+
 
 Route::get('/start-questionnaire', [OpenAIController::class, 'startQuestionnaire']);
 Route::get('/nextQuestion/{id}', [OpenAIController::class, 'nextQuestion']);
@@ -52,4 +49,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+///Pages route
+Route::get('/chat', function () {
+   
+    return view('chat');
+});
+Route::get('/aboutus', function () {
+    
+    return view('aboutus');
+});
+Route::get('/contactus', function () {
+    
+    return view('contactus');
+});
+
+
+////
 require __DIR__.'/auth.php';
