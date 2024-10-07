@@ -210,7 +210,8 @@ let currentQuestion = 0;
     
 document.getElementById("next-btn").addEventListener("click", () => {
     const Question=questions[currentQuestion].question;
-    const userInput = document.getElementById('user_answer');
+    const userInput =  document.querySelector(`input[name="question${currentQuestion + 1}"]:checked`);
+
     if (currentQuestion < questions.length - 1) {
         currentQuestion++;
         loadQuestion(currentQuestion);
@@ -446,6 +447,13 @@ function saveMarks(marks)
     });
 }
 function getResult() {
+    const loadingHTML = `
+       <div id="loading-spinner" class="spinner-container">
+            <div class="custom-spinner"></div>
+            <span>جاري التحميل...</span>
+        </div>
+    `;
+    document.querySelector('#second-stage').innerHTML = loadingHTML;
     $.ajax({
         type: 'get',
         url: '/result',
@@ -453,7 +461,7 @@ function getResult() {
            
            
             message=response.msg;
-            
+            console.log(message);
             const recommendations = message.split("\n\n");
             console.log(recommendations);
             let formattedHTML =  `
@@ -509,7 +517,9 @@ function getResult() {
             
             // // Insert the content into the recommendation div
             // document.getElementById('result').innerHTML = content;
-            document.querySelector('#second-stage').innerHTML += formattedHTML; 
+            const secondStage = document.querySelector('#second-stage');
+            secondStage.innerHTML = ''; // Clear the loading indicator
+            secondStage.innerHTML = formattedHTML;  
 
             
             saveResult(message);
@@ -518,6 +528,11 @@ function getResult() {
             },
             error: function(xhr, status, error) {
                 console.error("Error: " + error);
+                document.querySelector('#second-stage').innerHTML = `
+                <div class="error-message">
+                    <p>عذرًا، حدث خطأ أثناء تحميل النتائج. يرجى المحاولة مرة أخرى لاحقًا.</p>
+                </div>
+            `;
             }
 
     });
