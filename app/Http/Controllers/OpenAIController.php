@@ -1036,19 +1036,31 @@ private function formatResponse($response)
         $result=Result::where('user_id',1)->first();
         // Split the recommendations into an array
         $recommendations = explode("\n\n", trim($result->result));
-        $recommendations[0]="";
+        array_shift($recommendations); 
         // Initialize arrays to hold majors and reasons
     $majors = [];
     $reasons = [];
-
+   
     // Loop through each recommendation and split into major and reason
     foreach ($recommendations as $rec) {
-        // Remove leading numbers and split by ' - '
-        $cleanedRec = preg_replace('/^\d+\.\s*\*\*(.*?)\*\*\s*-\s*(.*)$/u', '$1 - $2', $rec);
-        if ($cleanedRec) {
-            list($major, $reason) = explode(' - ', $cleanedRec);
-            $majors[] = trim($major); // Add to majors array
-            $reasons[] = trim($reason); // Add to reasons array
+        if (!empty(trim($rec))) {
+            // Use preg_match to ensure it matches the expected pattern
+            if (preg_match('/^\d+\.\s*\*\*(.*?)\*\*\s*-\s*(.*)$/u', $rec, $matches)) {
+                $cleanedRec = $matches[1] . ' - ' . $matches[2];
+                
+                // Explode the cleaned recommendation and check if both parts exist
+                $splitRec = explode(' - ', $cleanedRec);
+                if (count($splitRec) == 2) {  // Ensure there are 2 elements
+                    $majors[] = trim($splitRec[0]);  // Major
+                    $reasons[] = trim($splitRec[1]); // Reason
+                } else {
+                    dd("Recommendation does not have both a major and a reason: $cleanedRec");
+                }
+            } else {
+                // Handle the case where the format doesn't match
+                // dd("Pattern did not match: $rec");
+                continue;
+            }
         }
     }
 
@@ -1056,7 +1068,7 @@ private function formatResponse($response)
     $pdf = PDF::loadView('pdf.result', ['majors' => $majors, 'reasons' => $reasons]);
 
     return $pdf->download('result.pdf');
-    }
+}
     public function ordering()
     {
         $result=Result::where('user_id',1)->first();
