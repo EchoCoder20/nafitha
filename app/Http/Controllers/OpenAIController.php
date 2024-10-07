@@ -16,6 +16,7 @@ use App\Models\Marks;
 use App\Models\Result;
 use Smalot\PdfParser\Parser;
 use Illuminate\Support\Facades\Cache;
+use PDF;
 
 
 class OpenAIController extends Controller
@@ -1030,6 +1031,85 @@ private function formatResponse($response)
     //     }
 
     // }
+    public function downloadPDF()
+    {
+        $result=Result::where('user_id',1)->first();
+        // Split the recommendations into an array
+        $recommendations = explode("\n\n", trim($result->result));
+        $recommendations[0]="";
+        // Initialize arrays to hold majors and reasons
+    $majors = [];
+    $reasons = [];
+
+    // Loop through each recommendation and split into major and reason
+    foreach ($recommendations as $rec) {
+        // Remove leading numbers and split by ' - '
+        $cleanedRec = preg_replace('/^\d+\.\s*\*\*(.*?)\*\*\s*-\s*(.*)$/u', '$1 - $2', $rec);
+        if ($cleanedRec) {
+            list($major, $reason) = explode(' - ', $cleanedRec);
+            $majors[] = trim($major); // Add to majors array
+            $reasons[] = trim($reason); // Add to reasons array
+        }
+    }
+
+    // Pass the majors and reasons to the view for PDF generation
+    $pdf = PDF::loadView('pdf.result', ['majors' => $majors, 'reasons' => $reasons]);
+
+    return $pdf->download('result.pdf');
+    }
+    public function ordering()
+    {
+        $result=Result::where('user_id',1)->first();
+        $questions=Questions::where('user_id',1)->get();
+        $marks = Marks::where('user_id', 1)->first();
+        $marksArray = json_decode($marks->marks, true);
+        $skills=json_encode($questions);
+        $majors=json_encode($result->result);
+        $grade=json_encode($marksArray);
+        $client = new Client();
+       
+       
+        $template = "
+           بناءً على المعلومات التالية عن الطالب:
+
+    المهارات والاهتمامات والعواطف: {$skills}
+    العلامات: {$grade}
+
+    وبالنظر إلى هذه المعلومات الإضافية ذات الصلة:
+    {$majors}
+    قم بترتيب خيارتي في القبول الموحد و ذلك بإظهار رمز التخصص المناسب لي . اطلب منك ان تختار لي 12 خيار.
+
+        ";
+
+        try {
+            $response = $client->post('https://api.openai.com/v1/chat/completions', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'model' => 'gpt-4-turbo',
+                    'messages' => [
+                                ['role' => 'system', 'content' => 'You are an expret advisor who can help 12 garde students on Oman to order their choises on Unified admission (Omani Student Guide).'],
+                                ['role' => 'user', 'content' => $template],
+                               
+                            ],
+
+                    'max_tokens' => 1000,
+                    'temperature' => 0.5,
+                ],
+            ]);
+        
+            $body = json_decode((string) $response->getBody(), true);
+            dd($body['choices'][0]['message']['content']);
+            // return response()->json(array('msg'=> $body['choices'][0]['message']['content']), 200);
+           
+        } catch (GuzzleException $e) {
+            return response()->json(array('error'=> $e,'status' => 'error'), 200);
+        }
+
+
+    }
     public function index()
     {
         //

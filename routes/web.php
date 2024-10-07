@@ -38,6 +38,8 @@ Route::post('/saveMarks', [OpenAIController::class, 'saveMarks']);
 Route::get('/result', [OpenAIController::class, 'result']);
 Route::post('/saveResult', [OpenAIController::class, 'saveResult']);
 Route::post('/chatResponse', [OpenAIController::class, 'chatResponse']);
+Route::get('/downloadPDF', [OpenAIController::class, 'downloadPDF']);
+Route::get('/ordering', [OpenAIController::class, 'ordering']);
 //End routing
 // Route::get('/start-test', [OpenAIController::class, 'index']);
 Route::get('/dashboard', function () {
