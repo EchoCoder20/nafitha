@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{asset('assets/css/auth.css')}}"> 
+<link rel="stylesheet" href="{{asset('assets/css/otherpages.css')}}">
 @extends('layouts.app')
 @section('content')
     <section class="signup-section">
@@ -6,9 +8,7 @@
             <!-- signup Form  -->
             <div class="login-form">
                 <h2>إنشاء حساب جديد</h2>
-                <form action="{{ route('register') }}" method="POST">
-                    @csrf
-
+                <form action="{{asset('submit_login.php')}}" method="POST">
                     <label for="email">البريد الإلكتروني</label>
                     <input type="email" id="email" name="email" placeholder="ادخل بريدك الإلكتروني" required>
     
@@ -26,21 +26,21 @@
                             <img src="{{asset('photo/eye-icon.png')}}" alt="Toggle Password Visibility">
                         </span>
                     </div>
-                    <!-- <label for="email">معلومات المدرسة</label>
-                    <input type="email" id="email" name="email" placeholder="اختر مدرستك" > -->
+                    <label for="email">معلومات المدرسة</label>
+                    <input type="email" id="email" name="email" placeholder="اختر مدرستك" required>
 
-                    <label for="code">ادخل الكود الخاص بالمدرسة</label>
-                    <input type="text" id="code" name="code" placeholder="ادخل الكود " >
+                    <label for="email">ادخل الكود الخاص بالمدرسة</label>
+                    <input type="email" id="email" name="email" placeholder="ادخل الكود " required>
 
                     <button type="submit" class="login-btn">تسجيل حساب جديد</button>
-                    <p class="create-account"> لديك حساب؟ <a href="{{ route('login') }}">قم بتسجيل الدخول</a></p>
+                    <p class="create-account"> لديك حساب؟ <a href="login.html">قم بتسجيل الدخول</a></p>
                 </form>
             </div>
     
-            <div class="image-container">
-                <img src="{{asset('photo/auth_icon.PNG')}}" class="icon-image" alt="Circle Icon Image">
-                <img src="{{asset('photo/auth.png')}}" class="phone-image" alt="Phone Image">
-            </div>
+            <!-- <div class="image-container">
+                <img src="photo/auth_icon.PNG" class="icon-image" alt="Circle Icon Image">
+                <img src="photo/auth.png" class="phone-image" alt="Phone Image">
+            </div> -->
         </div>
     </section>
     

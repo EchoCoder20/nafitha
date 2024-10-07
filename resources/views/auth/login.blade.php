@@ -1,15 +1,13 @@
+<link rel="stylesheet" href="{{asset('assets/css/auth.css')}}"> 
 @extends('layouts.app')
 @section('content')
-  <!-- Session Status -->
-  <x-auth-session-status class="mb-4" :status="session('status')" />
     <section class="login-section">
         <div class="login-shape">
     
             <!-- Login Form  -->
             <div class="login-form">
                 <h2>أهلاً بك مجدداً</h2>
-                <form action="{{ route('login') }}" method="POST">
-                    @csrf
+                <form action="submit_login.php" method="POST">
                     <label for="email">البريد الإلكتروني</label>
                     <input type="email" id="email" name="email" placeholder="ادخل البريد الإلكتروني" required>
     
@@ -26,15 +24,14 @@
                 </form>
             </div>
     
-            <div class="image-container">
-                <img src="{{asset('photo/auth_icon.PNG')}}" class="icon-image" alt="Circle Icon Image">
-                <img src="{{asset('photo/auth.png')}}" class="phone-image" alt="Phone Image">
-            </div>
+            <!-- <div class="image-container">
+                <img src="photo/auth_icon.PNG" class="icon-image" alt="Circle Icon Image">
+                <img src="photo/auth.png" class="phone-image" alt="Phone Image">
+            </div> -->
         </div>
     </section>
     
     
-
 
 <!-- hide/show pass  -->
 <script>
@@ -52,5 +49,4 @@
 }
 
 </script>
-
 @endsection

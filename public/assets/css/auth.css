@@ -1,4 +1,14 @@
 
+.login-nav li a {
+    font-size: 1.2vw;
+    text-decoration: none;
+    color: #00c7cd;
+    border: .17vw solid #00c7cd;
+    padding: .5vw 1vw;
+    border-radius: 3vw;
+    transition: all 0.3s ease;
+}
+
 nav ul li a.active {
     font-size: 1vw;
     padding: .7vw 1.2vw;
@@ -6,46 +16,40 @@ nav ul li a.active {
     background-color: #ffffff; 
     color: #ffffff;
 }
+#signup{
 
-/* Login Section with Rectangular Shape */
+        color: #ffffff;
+
+}
+#signup:hover{
+
+    color: #00c7cd;
+
+}
 .login-section {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    padding: 5vw;
-    flex-grow: 1;
-    height: 47vw; 
+   display: flex;
+   justify-content: center; 
 }
 
-.signup-section {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    padding: 5vw;
-    flex-grow: 1;
-    height: 60vw; 
-}
-
-/* Rectangular container */
 .login-shape {
-    margin-top: 4vw;
-    background-color: #fff;
-    border-radius: 30vw 0 0 30vw; 
-    border: solid 0.2vw #00c7cd;
-    padding: 5vw;
-    position: absolute;
-    right: -1vw; 
-    bottom: -0.5vw; 
+   
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 90vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+justify-content: center;
+    background-color: #fff;
+    border-radius: 2vw; 
+    /* border: solid 0.2vw #00c7cd; */
+    padding: 5vw;
+    width: 50%; 
     height: auto;
     z-index: 3;
     box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);
-    margin-bottom: 4vw;
+}
+
+.signup-section {
+    display: flex;
+   justify-content: center; 
 }
 
 .image-container {
@@ -58,14 +62,14 @@ nav ul li a.active {
 
 .icon-image {
     width: 0.5vw;  
-    max-width: 15vw; 
+    max-width: 17vw; 
     height: auto; 
     z-index: 2;
 }
 
 .phone-image {
     position: relative;
-    top: -7vw;  
+    top: -13vw;  
     left: -8vw;  
     width: 0.5vw;  
     max-width: 15vw; 
@@ -157,4 +161,64 @@ nav ul li a.active {
 .toggle-password img {
     width: 2vw; 
     height: auto;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .login-section, .signup-section {
+        justify-content: center;
+        align-items: center;
+        margin: 5vw auto;
+    }
+
+    .login-shape {
+        width: 90%;
+        padding: 6vw 4vw;
+        margin: 0 auto;
+    }
+
+    .image-container {
+        display: none;
+    }
+
+    .login-form {
+        width: 90%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .login-form h2 {
+        font-size: 3vw;
+    }
+
+    .login-form label {
+        font-size: 2.5vw;
+    }
+
+    .login-form input {
+        padding: 1.5vw;
+        font-size: 2.8vw;
+    }
+
+    .login-btn {
+        padding: 2vw;
+        font-size: 3vw;
+    }
+
+    .forgot-password, .create-account {
+        font-size: 2.5vw;
+        margin-top: 2vw;
+        text-align: center;
+    }
+
+    .toggle-password img {
+        width: 3.5vw;
+    }
+
+    .login-nav li a {
+        font-size: 3vw;
+        padding: 1.5vw 2.5vw;
+    }
 }

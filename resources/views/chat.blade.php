@@ -1,9 +1,54 @@
+<link rel="stylesheet" href="{{asset('assets/css/chat.css')}}"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 @extends('layouts.app')
 @section('content')
 
-       <!-- Chat Section -->
-       <div class="chat-container">
+ <!-- Chat Section -->
+
+ <div class="chat-container">
         <div id="chat-window">
+
+        <!-- Dropdown Menu -->
+
+            <div class="pp" id="pp" style="display: none;">
+         <div class="custom-dropdown">
+    <div class="dropdown-icon" id="dropdown-icon">
+     
+        <span class="arrow-icon">▼</span>
+        <span class="dropdown-text">Nafitha-GPT</span>
+      
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="/downloadPDF" id="download-pdf">تنزيل النتيجة PDF</a>
+        <a href="#" id="organize-options">رتب خياراتك في القبول الموحد</a>
+    </div>
+</div>
+
+
+                <!-- Box Suggestions -->
+                <div class="suggestions-container">
+                    <div class="suggestion-box">
+                        <i class="fas fa-question-circle"></i>
+                        <p>ما الفرق بين تخصص الهندسة الميكانيكية والهندسة الكهربائية؟ </p>
+                    </div>
+                    <div class="suggestion-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>كيف تختلف خطة دراسة الطب في الجامعة الوطنية عن جامعة السلطان قابوس؟
+
+                        </p>
+                    </div>
+                    <div class="suggestion-box">
+                        <i class="fas fa-user-graduate"></i>
+                        <p>ما هي التخصصات المتاحة في الجامعة العربية المفتوحة؟</p>
+                    </div>
+                    <!-- <div class="suggestion-box">
+                        <i class="fas fa-comments"></i>
+                        <p>ما هو الفرق بين تخصص "الهندسة المدنية" و "الهندسة المعمارية" من حيث محتوى الدراسة والفرص الوظيفية؟</p>
+                    </div> -->
+                </div>
+            
+                
+            </div>
             <!-- Murshid's initial message -->
             <div id="murshid-message" class="message murshid-message">
                 <img src="photo/murshid_icon.png" alt="Murshid Icon" class="chat-icon">
@@ -17,9 +62,16 @@
                         <button class="start-btn" id="start-test-btn">ابدأ الاختبار الآن</button>
                     </p>
                 </div>
+                <div id="typing-animation" style="display: none;">
+                    <div class="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
             </div>
 
-            <!-- Exam Box (Hidden initially) -->
+            <!-- Exam Box -->
             <div id="exam-box" class="exam-container" style="display: none;">
                 
                 <h2 class="exam-title">اختبار تحديد الشغف</h2>
@@ -38,8 +90,7 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    
-                    <button id="back-btn" style="display: none;">
+                <button id="back-btn" style="display: none;">
                          <i class="fas fa-arrow-right icon"></i>رجوع
                     </button>
                     <button id="next-btn" disabled>
@@ -48,7 +99,7 @@
                 </div>
             </div>
 
-            <!-- End Message (Hidden initially) -->
+            <!-- End Message  -->
             <div id="end-message" class="message murshid-message" style="display: none;">
                 <img src="photo/murshid_icon.png" alt="Murshid Icon" class="chat-icon">
                 <div class="message-bubble murshid-bubble">
@@ -58,7 +109,7 @@
             </div>
 
             <div id="second-stage" style="display: none;">
-              <div class="subject-container">
+            <div class="subject-container">
                 <h2>اختر المواد وأدخل الدرجات</h2>
 
                 <div class="subject-row">
@@ -267,9 +318,9 @@
                 </ol>
                 
                 <div class="button-container">
-                     <!-- <div id="start-chating"><button id="start-chat-btn" class="start-chat-btn" value="1">  ابدأ الدردشة  </button></div>
+                    <!-- <div id="start-chating"><button id="start-chat-btn" class="start-chat-btn" >  ابدأ الدردشة  </button></div>
                     
-                    <button id="back-btn" class="download-pdf-btn">  قم بتنزيل النتيجة PDF <i class="fas fa-download"></i>  </button>  -->
+                    <button id="back-btn" class="download-pdf-btn">  قم بتنزيل النتيجة PDF <i class="fas fa-download"></i>  </button> -->
                 </div>
             <!-- </div> -->
             </div>
@@ -280,6 +331,7 @@
 
         <!-- Input Area -->
         <div id='input-area' class='input-area' style="display: none;">
+
             <div class="input-container">
                 <textarea id="user-input" placeholder="اكتب رسالتك ......"></textarea>
                 <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
@@ -289,6 +341,7 @@
         
 
     </div>
+
 
 <script src="{{asset('assets/js/chat.js')}}"></script>
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
