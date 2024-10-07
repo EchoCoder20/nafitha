@@ -496,7 +496,7 @@ function getResult() {
 
                     <button id="start-chat-btn" class="start-chat-btn" >  ابدأ الدردشة  </button>
 
-                    <button id="back-btn" class="download-pdf-btn">  قم بتنزيل النتيجة PDF <i class="fas fa-download"></i>  </button>
+                    <a href="/downloadPDF"> <button id="back-btn" class="download-pdf-btn"> قم بتنزيل النتيجة PDF <i class="fas fa-download"></i>  </button></a>
 
                 </div>
 
